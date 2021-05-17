@@ -1,0 +1,30 @@
+*{
+    margin:0;
+    padding:0;
+}
+.container{
+    padding:30px;
+    margin-top: 20px;
+}
+.row{
+display: block;
+}
+#dojoNinjas{
+    display:flex;
+    justify-content: center;
+}
+#output{
+    display: block;
+    height: 350px;
+    margin:auto;
+    overflow-y: scroll;
+}
+hr{
+    background-color: black;
+}
+h2, h3, ul, li{
+    text-align: center;
+}
+ul li{
+    text-decoration-style: dashed;
+}

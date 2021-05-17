@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Users with Templates</title>
+        <title>Dojos and Ninjas</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         {% load static %}
         <link rel="stylesheet" href="{% static 'styles.css' %}">
@@ -16,58 +16,62 @@
                     <h2>Add a Dojo</h2>
                     <form action="/add_dojo" method="POST">
                         {% csrf_token %}
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" name="name" id="name" class="form-control">
+                        <div class="form-group form-inline">
+                            <label for="name" class="col-3">Name</label>
+                            <input type="text" name="name" id="name" class="form-control col-8">
+                        </div>
+                        <div class="form-group form-inline">
+                            <label for="city" class="col-3">City</label>
+                            <input type="text" name="city" id="city" class="form-control col-8">
+                        </div>
+                        <div class="form-group form-inline">
+                            <label for="state" class="col-3">State</label>
+                            <input type="text" name="state" id="state" class="form-control col-8">
                         </div>
                         <div class="form-group">
-                            <label for="city">City</label>
-                            <input type="text" name="city" id="city" class="form-control">
+                            <label for="Add" class="col-3"></label>
+                            <button class="btn btn-default col-2">Add</button>
                         </div>
-                        <div class="form-group">
-                            <label for="state">State</label>
-                            <input type="text" name="state" id="state" class="form-control">
-                        </div>
-                        <button class="btn btn-primary">Add</button>
                     </form>
                 </div>
                 <div class="col">
                     <h2>Add a Ninja</h2>
                     <form action="/add_ninja" method="POST">
                         {% csrf_token %}
-                        <div class="form-group">
-                            <label for="first_name">First Name</label>
-                            <input type="text" name="first_name" id="first_name" class="form-control">
+                        <div class="form-group form-inline">
+                            <label for="first_name" class="col-3">First Name</label>
+                            <input type="text" name="first_name" id="first_name" class="form-control col-8">
                         </div>
-                        <div class="form-group">
-                            <label for="last_name">Last Name</label>
-                            <input type="text" name="last_name" id="last_name" class="form-control">
+                        <div class="form-group form-inline">
+                            <label for="last_name" class="col-3">Last Name</label>
+                            <input type="text" name="last_name" id="last_name" class="form-control col-8">
                         </div>
-                        <div class="form-group">
-                            <label for="dojo">Dojo</label>
-                            <select name="dojo" id="dojo" class="form-control">
+                        <div class="form-group form-inline">
+                            <label for="dojo" class="col-3">Dojo</label>
+                            <select name="dojo" id="dojo" class="form-control col-8">
                             {% for dojo in dojos %}
                                 <option value="{{ dojo.id }}">{{ dojo.name }}</option>
                             {% endfor %}
                             </select>
                         </div>
-                        <button class="btn btn-primary">Add</button>
+                        <div class="form-group">
+                            <label for="Add" class="col-3"></label>
+                            <button class="btn btn-default col-2">Add</button>
+                        </div>
                     </form>
                 </div>
-                <hr>
-                <div class="row" id="output">
-                    <div class="col">
-                        <h1>All the Dojos</h1>
-                        {% for dojo in dojos %}
-                        <h3>Ninjas at the {{ dojo.name }}</h3>
-                        <ul>
+            </div>
+        <hr>
+            <div class="row" id="output">
+                <h2>All the Dojos</h2>
+                {% for dojo in dojos %}
+                    <h3>Ninjas at the {{ dojo.name }}</h3>
+                    <ul>
                         {% for ninja in dojo.ninjas.all %}
                             <li>{{ ninja.first_name }} {{ ninja.last_name }}</li>
                         {% endfor %}
-                        </ul>
-                        {% endfor %}
-                    </div>
-                </div>
+                    </ul>
+                {% endfor %}
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
